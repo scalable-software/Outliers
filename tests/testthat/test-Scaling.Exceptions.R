@@ -47,7 +47,7 @@ describe("When input |> exception[['argument.NULL']]()",{
     input <- TRUE
 
     # THEN
-    error.message <- "Argument.NULL: 'sample' cannot be NULL."
+    error.message <- "Argument.NULL: 'medcouple' cannot be NULL."
 
     input |> exception[['argument.NULL']]() |> expect.error(error.message)
   })
