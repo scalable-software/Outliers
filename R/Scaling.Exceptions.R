@@ -11,7 +11,7 @@
 Scaling.Exceptions <- \() {
   exceptions <- list()
   exceptions[['argument.NULL']] <- \(invoke) {
-    if(invoke) stop("Argument.NULL: 'sample' cannot be NULL.", call. = FALSE)
+    if(invoke) stop("Argument.NULL: 'medcouple' cannot be NULL.", call. = FALSE)
   }
   exceptions[['type.mismatch']] <- \(invoke, actual = NULL) {
     if (invoke) stop("Type.Mismatch: Got '", actual, "' but expected 'numeric'.", call. = FALSE)
