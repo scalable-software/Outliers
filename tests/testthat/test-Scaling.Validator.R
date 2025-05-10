@@ -12,12 +12,12 @@ describe("When validators <- Scaling.Validator()",{
     # THEN
     validators |> expect.list()
   })
-  it("then validators contains 'sample'",{
+  it("then validators contains 'medcouple'",{
     # GIVEN
     validators <- Scaling.Validator()
 
     # THEN
-    validators[['sample']] |> expect.exist()
+    validators[['medcouple']] |> expect.exist()
   })
   it("then validators contains 'exist'",{
     # GIVEN
@@ -35,7 +35,7 @@ describe("When validators <- Scaling.Validator()",{
   })
 })
 
-describe("When input |> validator[['sample']]()",{
+describe("When input |> validator[['medcouple']]()",{
   it("then no exception is thrown when input exist and is numeric",{
     # GIVEN
     validator <- Scaling.Validator()
@@ -44,7 +44,7 @@ describe("When input |> validator[['sample']]()",{
     input <- 1
 
     # THEN
-    input |> validator[['sample']]() |> expect.no.error()
+    input |> validator[['medcouple']]() |> expect.no.error()
   })
   it("then an exception is thrown when input exists",{
     # GIVEN
@@ -54,9 +54,9 @@ describe("When input |> validator[['sample']]()",{
     input <- NULL
 
     # THEN
-    error.message <- "Argument.NULL: 'sample' cannot be NULL."
+    error.message <- "Argument.NULL: 'medcouple' cannot be NULL."
 
-    input |> validator[['sample']]() |> expect.error(error.message)
+    input |> validator[['medcouple']]() |> expect.error(error.message)
   })
   it("then an exception is thrown when input is not numeric",{
     # GIVEN
@@ -68,7 +68,7 @@ describe("When input |> validator[['sample']]()",{
     # THEN
     error.message <- "Type.Mismatch: Got 'character' but expected 'numeric'."
 
-    input |> validator[['sample']]() |> expect.error(error.message)
+    input |> validator[['medcouple']]() |> expect.error(error.message)
   })
 })
 
@@ -91,7 +91,7 @@ describe("When input |> validator[['exist']]()",{
     input <- NULL
 
     # THEN
-    error.message <- "Argument.NULL: 'sample' cannot be NULL"
+    error.message <- "Argument.NULL: 'medcouple' cannot be NULL"
 
     input |> validator[['exist']]() |> expect.error(error.message)
   })
