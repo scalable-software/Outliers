@@ -7,6 +7,6 @@
 # * https://testthat.r-lib.org/reference/test_package.html#special-files
 
 library(testthat)
-library(R.Package)
+library(Outliers)
 
-test_check("R.Package")
+test_check("Outliers")

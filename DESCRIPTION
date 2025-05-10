@@ -1,5 +1,5 @@
-Package: R.Package
-Title: R Package Template
+Package: Outliers
+Title: Outlier Detection in R
 Version: 0.0.1.0000
 Authors@R: 
     person(given = "Flippie",
@@ -7,7 +7,7 @@ Authors@R:
            role = c("aut", "cre"),
            email = "Flippie.Coetser@gmail.com",
            comment = c(ORCID = "0000-0003-0549-9245"))
-Description: This repository can be used as a boilerplate when creating a new R package.
+Description: This R package provides a collection of functions for detecting outliers in univariate data. 
 License: file LICENSE
 Encoding: UTF-8
 LazyData: true
