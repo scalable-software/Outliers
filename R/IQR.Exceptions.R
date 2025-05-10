@@ -15,8 +15,8 @@ IQR.Exceptions <- \(){
   exceptions[['argument.NULL']]    <- \(invoke, argument = NULL) {
     if(invoke) stop("Argument.NULL: '",argument,"' cannot be NULL.", call. = FALSE)
   }
-  exceptions[['type.mismatch']]    <- \(invoke, actual = NULL) {
-    if (invoke) stop("Type.Mismatch: Got '", actual, "' but expected 'numeric'.", call. = FALSE)
+  exceptions[['type.mismatch']]    <- \(invoke, actual = NULL, expected = NULL) {
+    if (invoke) stop("Type.Mismatch: Got '", actual, "' but expected '", expected, "'.", call. = FALSE)
   }
   exceptions[['property.missing']] <- \(invoke, property = NULL) {
     if (invoke) stop("Property.Missing: '",property,"'.", call. = FALSE)
