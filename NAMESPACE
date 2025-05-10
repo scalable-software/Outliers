@@ -2,3 +2,4 @@
 
 export(Example)
 export(Quartile.Service)
+export(Skewness.Service)
