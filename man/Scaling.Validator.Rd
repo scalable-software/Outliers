@@ -6,7 +6,7 @@
 \value{
 A \code{list} of validators:
 \itemize{
-\item \code{sample()}
+\item \code{medcouple()}
 \item \code{exist()}
 \item \code{is.numeric()}
 }
@@ -14,8 +14,8 @@ A \code{list} of validators:
 \description{
 \code{Scaling.Validator()} is an internal function that returns a set of validators used by \code{Scaling.Service()}.
 \itemize{
-\item The first validator: \code{sample}, checks if the sample data provided is not NULL and is numeric.
-\item The second validator: \code{exist}, checks if a non-null data argument was provided.
-\item The third validator: \code{is.numeric}, checks if the data argument provided contains numerical data.
+\item The first validator: \code{medcouple}, checks if the medcouple provided is not NULL and is numeric.
+\item The second validator: \code{exist}, checks if a non-null medcouple argument was provided.
+\item The third validator: \code{is.numeric}, checks if the medcouple argument provided contains numerical data.
 }
 }
