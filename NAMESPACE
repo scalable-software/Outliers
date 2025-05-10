@@ -3,4 +3,5 @@
 export(Example)
 export(IQR.Service)
 export(Quartile.Service)
+export(Scaling.Service)
 export(Skewness.Service)
