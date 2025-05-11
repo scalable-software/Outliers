@@ -31,7 +31,7 @@ describe("Given operations <- Outlier.Broker() |> Outlier.Service()",{
 describe("When input |> operation[['extract']]()",{
   it("then the outlier in input should be returned",{
     # GIVEN
-    boundary <- Boundary.Service()
+    boundary <- Boundary.Broker() |> Boundary.Service()
     operation  <- boundary |> Outlier.Broker()
     input    <- 1000 |> rnorm(10,5)
 
@@ -50,7 +50,7 @@ describe("When input |> operation[['extract']]()",{
 describe("When input |> operation[['remove']]()",{
   it("then the outlier in input should be removed",{
     # GIVEN
-    boundary <- Boundary.Service()
+    boundary <- Boundary.Broker() |> Boundary.Service()
     operation <- boundary |> Outlier.Broker()
     input    <- 1000 |> rnorm(10,5)
 
