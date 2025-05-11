@@ -15,13 +15,13 @@
 #' 
 #' rm(skewness.medcouple)
 #' @export
-Skewness.Service <- \() {
+Skewness.Service <- \(broker) {
   validate <- Skewness.Validator()
 
   services <- list()
   services[['medcouple']] <- \(sample) {
     sample |> validate[['sample']]()
-    sample |> robustbase::mc()
+    sample |> broker[['medcouple']]()
   }
   return(services)
 }

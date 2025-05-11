@@ -7,14 +7,14 @@ describe("Given Skewness.Service",{
 describe("When services <- Skewness.Service()",{
   it("then services is a list",{
     # GIVEN
-    services <- Skewness.Service()
+    services <- Skewness.Broker() |> Skewness.Service()
 
     # THEN
     services |> expect.list()
   })
   it("then services contains 'medcouple'",{
     # GIVEN
-    services <- Skewness.Service()
+    services <- Skewness.Broker() |> Skewness.Service()
 
     # THEN
     services[['medcouple']] |> expect.exist()
@@ -24,7 +24,7 @@ describe("When services <- Skewness.Service()",{
 describe("When input |> service[['medcouple']]()",{
   it("then the medcouple of the sample number are returned",{
     # GIVEN
-    service <- Skewness.Service()
+    service <- Skewness.Broker() |> Skewness.Service()
 
     input <- 1000 |> rnorm(10,5)
 
@@ -38,7 +38,7 @@ describe("When input |> service[['medcouple']]()",{
   })
   it("then an exception is thrown when input is NULL",{
     # GIVEN
-    service <- Skewness.Service()
+    service <- Skewness.Broker() |> Skewness.Service()
 
     # WHEN
     input <- NULL
@@ -49,7 +49,7 @@ describe("When input |> service[['medcouple']]()",{
   })
   it("then an exception is thrown when input is not numeric",{
     # GIVEN
-    service <- Skewness.Service()
+    service <- Skewness.Broker() |> Skewness.Service()
 
     # WHEN
     input <- "a"
