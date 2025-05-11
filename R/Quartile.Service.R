@@ -8,26 +8,18 @@
 #' @returns A `list` of utility functions: 
 #' * `first(data)`
 #' * `third(data)`
-#' @examples
-#' quartile <- Quartile.Service()
-#' 
-#' quartile.first <- 
-#'   1000 |> rnorm(10,5) |> quartile[['first']]()
-#' 
-#' rm(quartile.first)
-#' rm(quartile)
 #' @export
-Quartile.Service <- \() {
+Quartile.Service <- \(broker) {
   validate <- Quartile.Validator()
 
   services <- list()
   services[['first']] <- \(sample) {
     sample |> validate[['sample']]() 
-    sample |> stats::quantile(0.25)
+    sample |> broker[['first']]()
   }
   services[['third']] <- \(sample) {
     sample |> validate[['sample']]()
-    sample |> stats::quantile(0.75)
+    sample |> broker[['third']]()
   }
   return(services)
 }

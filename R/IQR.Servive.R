@@ -18,7 +18,7 @@
 #' rm(iqr)
 #' @export
 IQR.Service <- \() {
-  quartile <- Quartile.Service()
+  quartile <- Quartile.Broker() |> Quartile.Service()
   
   validate <- IQR.Validator()
 

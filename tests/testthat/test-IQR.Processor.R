@@ -37,7 +37,7 @@ describe("When input |> processor[['IQR']]()",{
     # GIVEN
     processors <- IQR.Service() |> IQR.Processor()
 
-    quartile   <- Quartile.Service()
+    quartile   <- Quartile.Broker() |> Quartile.Service()
 
     input <- 1000 |> rnorm(10,5)
 
@@ -57,7 +57,7 @@ describe("When input |> processor[['IQR']]()",{
     # GIVEN
     processors <- IQR.Service() |> IQR.Processor()
 
-    quartile   <- Quartile.Service()
+    quartile   <- Quartile.Broker() |> Quartile.Service()
 
     input <- 1000 |> rnorm(10,5)
 
@@ -73,7 +73,7 @@ describe("When input |> processor[['IQR']]()",{
     # GIVEN
     processors <- IQR.Service() |> IQR.Processor()
 
-    quartile   <- Quartile.Service()
+    quartile   <- Quartile.Broker() |> Quartile.Service()
 
     input <- 1000 |> rnorm(10,5)
 
