@@ -9,20 +9,20 @@
 #' * `upper(medcouple)`
 #' * `lower(medcouple)`
 Scaling.Broker <- \() {
-  services <- list()
-  services[['upper']] <- \(medcouple) {
+  operations <- list()
+  operations[['upper']] <- \(medcouple) {
     adjustments <- list()
     adjustments[[1]] <- \(medcouple) exp(-3*medcouple)
     adjustments[[2]] <- \(medcouple) exp(-4*medcouple)
     
     medcouple |> adjustments[[(medcouple >= 0) + 1]]()
   }
-  services[['lower']] <- \(medcouple) {
+  operations[['lower']] <- \(medcouple) {
     adjustments <- list()
     adjustments[[1]] <- \(medcouple) exp(4*medcouple)
     adjustments[[2]] <- \(medcouple) exp(3*medcouple)
     
     medcouple |> adjustments[[(medcouple >= 0) + 1]]()
    }
-  return(services)
+  return(operations)
 }

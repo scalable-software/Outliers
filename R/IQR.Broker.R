@@ -14,16 +14,16 @@ IQR.Broker <- \() {
   
   validate <- IQR.Validator()
 
-  services <- list()
-  services[['IQR.from.quartiles']] <- \(quartiles) {
+  operations <- list()
+  operations[['IQR.from.quartiles']] <- \(quartiles) {
     quartiles[['third']] - quartiles[['first']]
   }
-  services[['IQR.from.sample']]    <- \(sample) {
+  operations[['IQR.from.sample']]    <- \(sample) {
     quartiles <- list()
     quartiles[['first']] <- sample |> quartile[['first']]()
     quartiles[['third']] <- sample |> quartile[['third']]()
 
-    quartiles |> services[['IQR.from.quartiles']]()
+    quartiles |> operations[['IQR.from.quartiles']]()
   }
-  return(services)
+  return(operations)
 }

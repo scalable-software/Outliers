@@ -9,8 +9,8 @@
 #' * `first(data)`
 #' * `third(data)`
 Quartile.Broker <- \() {
-  services <- list()
-  services[['first']] <- \(sample) sample |> stats::quantile(0.25)
-  services[['third']] <- \(sample) sample |> stats::quantile(0.75)
-  return(services)
+  operations <- list()
+  operations[['first']] <- \(sample) sample |> stats::quantile(0.25)
+  operations[['third']] <- \(sample) sample |> stats::quantile(0.75)
+  return(operations)
 }
