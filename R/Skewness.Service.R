@@ -8,7 +8,7 @@
 #' @returns A `list` of utility functions: 
 #' * `medcouple(data)`
 #' @examples
-#' skewness <- Skewness.Service()
+#' skewness <- Skewness.Broker() |> Skewness.Service()
 #' 
 #' skewness.medcouple <-
 #'   1000 |> rnorm(10,5) |> skewness[['medcouple']]()

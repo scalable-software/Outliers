@@ -32,8 +32,8 @@ describe("Given input |> service[['upper']]()",{
   it("then an upper boundary should be returned",{
     # GIVEN
     quartile <- Quartile.Service()
-    range    <- IQR.Service() |> IQR.Processor()
-    skewness <- Skewness.Service()
+    range    <- IQR.Service()     |> IQR.Processor()
+    skewness <- Skewness.Broker() |> Skewness.Service()
     scale    <- Scaling.Service()
 
     service <- Boundary.Service()
@@ -78,8 +78,8 @@ describe("Given input |> service[['lower']]()",{
   it("then a lower boundary should be returned",{
     # GIVEN
     quartile <- Quartile.Service()
-    range    <- IQR.Service() |> IQR.Processor()
-    skewness <- Skewness.Service()
+    range    <- IQR.Service()     |> IQR.Processor()
+    skewness <- Skewness.Broker() |> Skewness.Service()
     scale    <- Scaling.Service()
 
     service <- Boundary.Service()

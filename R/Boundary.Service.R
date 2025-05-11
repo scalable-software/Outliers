@@ -14,8 +14,8 @@ Boundary.Service <- \() {
   validate <- Boundary.Validator()
 
   quartile <- Quartile.Service()
-  range    <- IQR.Service() |> IQR.Processor()
-  skewness <- Skewness.Service()
+  range    <- IQR.Service()      |> IQR.Processor()
+  skewness <- Skewness.Broker () |>Skewness.Service()
   scale    <- Scaling.Service()
 
   services <- list()
