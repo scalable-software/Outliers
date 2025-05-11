@@ -32,7 +32,7 @@ describe("When input |> service[['extract']]()",{
   it("then the outlier in input should be returned",{
     # GIVEN
     boundary <- Boundary.Service()
-    service  <- boundary |> Outlier.Service()
+    service  <- boundary |> Outlier.Broker() |> Outlier.Service()
     input    <- 1000 |> rnorm(10,5)
 
     # WHEN
@@ -48,7 +48,7 @@ describe("When input |> service[['extract']]()",{
   it("then an exception is thrown when input is NULL",{
     # GIVEN
     boundary <- Boundary.Service()
-    service  <- boundary |> Outlier.Service()
+    service  <- boundary |> Outlier.Broker() |> Outlier.Service()
     
     # WHEN
     input   <- NULL
@@ -60,7 +60,7 @@ describe("When input |> service[['extract']]()",{
   it("then an exception is thrown when input is not numeric",{
     # GIVEN
     boundary <- Boundary.Service()
-    service  <- boundary |> Outlier.Service()
+    service  <- boundary |> Outlier.Broker() |> Outlier.Service()
     
     # WHEN
     input   <- ''
@@ -72,7 +72,7 @@ describe("When input |> service[['extract']]()",{
   it("then an exception should be thrown when medcouple is out of range",{
     # Given
     boundary <- Boundary.Service()
-    service  <- boundary |> Outlier.Service()
+    service  <- boundary |> Outlier.Broker() |> Outlier.Service()
     set.seed(42)
 
     # When
@@ -88,7 +88,7 @@ describe("When input |> service[['remove']]()",{
   it("then the outlier in input should be removed",{
     # GIVEN
     boundary <- Boundary.Service()
-    service  <- boundary |> Outlier.Service()
+    service  <- boundary |> Outlier.Broker() |> Outlier.Service()
     input    <- 1000 |> rnorm(10,5)
 
     # WHEN
@@ -104,7 +104,7 @@ describe("When input |> service[['remove']]()",{
   it("then an exception is thrown when input is NULL",{
     # Given
     boundary <- Boundary.Service()
-    service  <- boundary |> Outlier.Service()
+    service  <- boundary |> Outlier.Broker() |> Outlier.Service()
     
     # When
     input   <- NULL
@@ -116,7 +116,7 @@ describe("When input |> service[['remove']]()",{
   it("then an exception is thrown when input is not numeric",{
     # GIVEN
     boundary <- Boundary.Service()
-    service  <- boundary |> Outlier.Service()
+    service  <- boundary |> Outlier.Broker() |> Outlier.Service()
     
     # WHEN
     input   <- ''
@@ -128,7 +128,7 @@ describe("When input |> service[['remove']]()",{
   it("then an exception should be thrown when medcouple is out of range",{
     # GIVEN
     boundary <- Boundary.Service()
-    service  <- boundary |> Outlier.Service()
+    service  <- boundary |> Outlier.Broker() |> Outlier.Service()
     set.seed(42)
 
     # WHEN
