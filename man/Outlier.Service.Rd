@@ -4,10 +4,10 @@
 \alias{Outlier.Service}
 \title{Outlier Service}
 \usage{
-Outlier.Service(boundary)
+Outlier.Service(broker)
 }
 \arguments{
-\item{boundary}{A Boundary.Service object that defines the upper and lower boundaries for outlier detection.}
+\item{broker}{A Outlier.Broker instance that calculate the boundaries for outlier detection.}
 }
 \value{
 A list containing two functions: \code{extract} and \code{remove}.
