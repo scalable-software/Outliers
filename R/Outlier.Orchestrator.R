@@ -1,6 +1,8 @@
 Outlier.Orchestrator <- \() {
-  service <- Boundary.Service() |> 
-    Outlier.Broker() |>
+  service <- 
+    Boundary.Broker()  |>
+    Boundary.Service() |> 
+    Outlier.Broker()   |>
     Outlier.Service()
 
   orchestrations <- list()
@@ -8,3 +10,15 @@ Outlier.Orchestrator <- \() {
   orchestrations[['remove']]  <- \(sample) sample |> service[['remove']]()
   return(orchestrations)
 }
+
+#' Outlier Orchestrator
+#' 
+#' @description
+#' `Outlier.Orchestrator()` is a function that orchestrates the outlier detection process.
+#'
+#' @return A list containing two functions: `extract` and `remove`.
+#'  - `extract`: Extracts outliers from the sample.
+#'  - `remove`: Removes outliers from the sample.
+#'
+#' @export
+Orchestrator <- Outlier.Orchestrator

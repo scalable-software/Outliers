@@ -32,14 +32,14 @@ describe("When orchestrations <- Outlier.Orchestrator()",{
 describe("When input |> orchestration[['extract']]()",{
   it("then the outlier in input should be returned",{
     # Given
-    boundary.service <- Boundary.Service()
+    service <- Boundary.Broker() |> Boundary.Service()
 
     orchestration <- Outlier.Orchestrator()
     input   <- 1000 |> rnorm(10,5)
 
     # When
-    boundary.upper <- input |> boundary.service[['upper']]()
-    boundary.lower <- input |> boundary.service[['lower']]()
+    boundary.upper <- input |> service[['upper']]()
+    boundary.lower <- input |> service[['lower']]()
 
     expected.outliers <- input[input < boundary.lower | input > boundary.upper]
     actual.outliers   <- input |> orchestration[['extract']]()
@@ -52,14 +52,14 @@ describe("When input |> orchestration[['extract']]()",{
 describe("When input |> orchestration[['remove']]()",{
   it("then the outlier in input should be removed",{
     # Given
-    boundary.service <- Boundary.Service()
+    service <- Boundary.Broker() |> Boundary.Service()
 
     outlier.orchestration <- Outlier.Orchestrator()
     input   <- 1000 |> rnorm(10,5)
 
     # When
-    boundary.upper <- input |> boundary.service[['upper']]()
-    boundary.lower <- input |> boundary.service[['lower']]()
+    boundary.upper <- input |> service[['upper']]()
+    boundary.lower <- input |> service[['lower']]()
 
     expected.outliers <- input[input >= boundary.lower & input <= boundary.upper]
     actual.outliers   <- input |> outlier.orchestration[['remove']]()
