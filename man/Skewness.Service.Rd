@@ -15,11 +15,3 @@ A \code{list} of utility functions:
 \item The first function: \code{medcouple}, calculates and returns the medcouple of a sample data set.
 }
 }
-\examples{
-skewness <- Skewness.Service()
-
-skewness.medcouple <-
-  1000 |> rnorm(10,5) |> skewness[['medcouple']]()
-
-rm(skewness.medcouple)
-}
