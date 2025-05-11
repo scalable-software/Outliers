@@ -17,7 +17,7 @@ Outlier.Validator <- \() {
   exception <- Outlier.Exceptions()
   warnings  <- Outlier.Warnings()
 
-  skewness  <- Skewness.Service()
+  skewness  <- Skewness.Broker() |> Skewness.Service()
 
   validators <- list()
   validators[['sample']] <- \(sample) {
