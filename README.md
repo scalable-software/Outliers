@@ -21,13 +21,13 @@ Two utilities are included in this package:
 1. Extracting outliers from a data sample
 
 ```r
-outliers <- Outliers::Outlier.Orchestration()
-output   <- 1000 |> rnorm(10,5) |> outliers[['extract']]()
+extract <- Outliers::Outliers.extract()
+output   <- 1000 |> rnorm(10,5) |> extract()
 ```
 
 2. Remove outliers from a vector
 
 ```r
-outliers <- Outliers::Outlier.Orchestration()
+outliers <- Outliers::Orchestrator()
 output   <- 1000 |> rnorm(10,5) |> outliers[['remove']]()
 ```
