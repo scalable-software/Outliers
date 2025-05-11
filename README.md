@@ -22,12 +22,12 @@ Two utilities are included in this package:
 
 ```r
 library(Outliers)
-output <- 1000 |> rnorm(10,5) |> extract.outliers()
+outliers <- 1000 |> rnorm(10,5) |> extract.outliers()
 ```
 
 2. Remove outliers from a data sample
 
 ```r
 library(Outliers)
-output <- 1000 |> rnorm(10,5) |> remove.outliers()
+clean <- 1000 |> rnorm(10,5) |> remove.outliers()
 ```
