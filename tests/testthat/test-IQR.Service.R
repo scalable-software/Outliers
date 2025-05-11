@@ -4,24 +4,24 @@ describe("GIVEN IQR.Service",{
   })
 })
 
-describe("WHEN services <- IQR.Service()",{
+describe("Then services <- IQR.Service()",{
   it("then services is a list",{
     # GIVEN
-    services <- IQR.Service()
+    services <- IQR.Broker() |> IQR.Service()
 
     # THEN
     services |> expect.list()
   })
   it("then services contains 'IQR.from.quartiles' service",{
     # GIVEN
-    services <- IQR.Service()
+    services <- IQR.Broker() |> IQR.Service()
 
     # THEN
     services[['IQR.from.quartiles']] |> expect.exist()
   })
   it("then services contains 'IQR.from.sample' service",{
     # GIVEN
-    services <- IQR.Service()
+    services <- IQR.Broker() |> IQR.Service()
 
     # THEN
     services[['IQR.from.sample']] |> expect.exist()
@@ -31,7 +31,7 @@ describe("WHEN services <- IQR.Service()",{
 describe("WHEN input |> service[['IQR.from.quartiles']]()",{
   it("then no exception is thrown if input is a list with first and third properties",{
     # GIVEN
-    service <- IQR.Service()
+    service <- IQR.Broker() |> IQR.Service()
     quartile <- Quartile.Broker() |> Quartile.Service()
 
     data <- 1000 |> rnorm(10,5)
@@ -46,7 +46,7 @@ describe("WHEN input |> service[['IQR.from.quartiles']]()",{
   })
   it("then an exception is thrown if input is NULL", {
     # GIVEN
-    service <- IQR.Service()
+    service <- IQR.Broker() |> IQR.Service()
 
     # WHEN
     input <- NULL
@@ -57,7 +57,7 @@ describe("WHEN input |> service[['IQR.from.quartiles']]()",{
   })
   it("then an exception is thrown if input has not first property",{
     # GIVEN
-    service <- IQR.Service()
+    service <- IQR.Broker() |> IQR.Service()
     quartile <- Quartile.Broker() |> Quartile.Service()
 
     data <- 1000 |> rnorm(10,5)
@@ -72,7 +72,7 @@ describe("WHEN input |> service[['IQR.from.quartiles']]()",{
   })
   it("then an exception is thrown if input is a list with no third",{
     # GIVEN
-    service  <- IQR.Service()
+    service  <- IQR.Broker() |> IQR.Service()
     quartile <- Quartile.Broker() |> Quartile.Service()
 
     data <- 1000 |> rnorm(10,5)
@@ -87,7 +87,7 @@ describe("WHEN input |> service[['IQR.from.quartiles']]()",{
   })
   it("then an exception is thrown if input is a list with no first",{
     # GIVEN
-    service  <- IQR.Service()
+    service  <- IQR.Broker() |> IQR.Service()
     quartile <- Quartile.Broker() |> Quartile.Service()
 
     data <- 1000 |> rnorm(10,5)
@@ -102,7 +102,7 @@ describe("WHEN input |> service[['IQR.from.quartiles']]()",{
   })
   it("then the IQR is returned if input is a list with first and third",{
     # GIVEN
-    service <- IQR.Service()
+    service <- IQR.Broker() |> IQR.Service()
 
     quartile <- Quartile.Broker() |> Quartile.Service()
     sample <- 1000 |> rnorm(10,5)
@@ -123,7 +123,7 @@ describe("WHEN input |> service[['IQR.from.quartiles']]()",{
 describe("WHEN input |> service[['IQR.from.sample']]()",{
   it("then no exception is thrown if input is numeric",{
     # GIVEN
-    service <- IQR.Service()
+    service <- IQR.Broker() |> IQR.Service()
 
     # WHEN
     input <- 1000 |> rnorm(10,5)
@@ -133,7 +133,7 @@ describe("WHEN input |> service[['IQR.from.sample']]()",{
   })
   it("then an exception is thrown if input is NULL",{
     # GIVEN
-    service <- IQR.Service()
+    service <- IQR.Broker() |> IQR.Service()
 
     # WHEN
     input <- NULL
@@ -144,7 +144,7 @@ describe("WHEN input |> service[['IQR.from.sample']]()",{
   })
   it("then an exception is thrown if input is no numeric",{
     # GIVEN
-    service <- IQR.Service()
+    service <- IQR.Broker() |> IQR.Service()
 
     # WHEN
     input <- list()
@@ -155,7 +155,7 @@ describe("WHEN input |> service[['IQR.from.sample']]()",{
   })
   it("then the IQR is returned if input is numeric",{
     # GIVEN
-    service  <- IQR.Service()
+    service  <- IQR.Broker() |> IQR.Service()
     quartile <- Quartile.Broker() |> Quartile.Service()
 
     input <- 1000 |> rnorm(10,5)

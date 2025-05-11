@@ -9,33 +9,18 @@
 #' @returns A `list` of utility functions: 
 #' * `IQR.from.quartiles(quartiles)`
 #' * `IQR.from.sample(sample)`
-#' @examples
-#' IQR <- IQR.Service()
-#' 
-#' iqr <-
-#'   1000 |> rnorm(10,5) |> IQR[['IQR.from.sample']]()
-#' 
-#' rm(iqr)
 #' @export
-IQR.Service <- \() {
-  quartile <- Quartile.Broker() |> Quartile.Service()
-  
+IQR.Service <- \(broker) {
   validate <- IQR.Validator()
 
   services <- list()
   services[['IQR.from.quartiles']] <- \(quartiles) {
     quartiles |> validate[['quartiles']]()
-
-    quartiles[['third']] - quartiles[['first']]
+    quartiles |> broker[['IQR.from.quartiles']]()
   }
   services[['IQR.from.sample']]    <- \(sample) {
     sample |> validate[['sample']]()
-
-    quartiles <- list()
-    quartiles[['first']] <- sample |> quartile[['first']]()
-    quartiles[['third']] <- sample |> quartile[['third']]()
-
-    quartiles |> services[['IQR.from.quartiles']]()
+    sample |> broker[['IQR.from.sample']]()
   }
   return(services)
 }

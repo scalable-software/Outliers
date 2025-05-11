@@ -25,7 +25,7 @@ describe("When processors <- IQR.Processor()",{
 describe("When input |> processor[['IQR']]()",{
   it("then no exception is thrown if input is numeric",{
     # GIVEN
-    processors <- IQR.Service() |> IQR.Processor()
+    processors <- IQR.Broker() |> IQR.Service() |> IQR.Processor()
     
     # When 
     input <- 1000 |> rnorm(10,5)
@@ -35,7 +35,7 @@ describe("When input |> processor[['IQR']]()",{
   })
   it("then the IQR is returned if input is numeric",{
     # GIVEN
-    processors <- IQR.Service() |> IQR.Processor()
+    processors <- IQR.Broker() |> IQR.Service() |> IQR.Processor()
 
     quartile   <- Quartile.Broker() |> Quartile.Service()
 
@@ -55,7 +55,7 @@ describe("When input |> processor[['IQR']]()",{
   })
   it("then no exception is thrown if input is a list",{
     # GIVEN
-    processors <- IQR.Service() |> IQR.Processor()
+    processors <- IQR.Broker() |> IQR.Service() |> IQR.Processor()
 
     quartile   <- Quartile.Broker() |> Quartile.Service()
 
@@ -71,7 +71,7 @@ describe("When input |> processor[['IQR']]()",{
   })
   it("then the IQR is returned if input is a list with first and third quartile",{
     # GIVEN
-    processors <- IQR.Service() |> IQR.Processor()
+    processors <- IQR.Broker() |> IQR.Service() |> IQR.Processor()
 
     quartile   <- Quartile.Broker() |> Quartile.Service()
 
