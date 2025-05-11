@@ -10,28 +10,17 @@
 #' * `lower()`: Calculates the lower boundary for outlier detection.
 #' 
 #' @export
-Boundary.Service <- \() {
+Boundary.Service <- \(broker) {
   validate <- Boundary.Validator()
-
-  quartile <- Quartile.Broker()  |> Quartile.Service()
-  range    <- IQR.Broker()       |> IQR.Service()  |> IQR.Processor()
-  skewness <- Skewness.Broker () |> Skewness.Service()
-  scale    <- Scaling.Broker()   |> Scaling.Service()
-
+  
   services <- list()
   services[['upper']] <- \(sample) {
     sample |> validate[['sample']]()
-
-    (sample |> quartile[['third']]()) + 1.5 * 
-    (sample |> range[['IQR']]()) * 
-    (sample |> skewness[['medcouple']]() |> scale[['upper']]())
+    sample |> broker[['upper']]()
   }
   services[['lower']] <- \(sample) {
     sample |> validate[['sample']]()
-
-    (sample |> quartile[['first']]()) - 1.5 * 
-    (sample |> range[['IQR']]()) * 
-    (sample |> skewness[['medcouple']]() |> scale[['lower']]())
+    sample |> broker[['lower']]()
   }
   return(services)
 }
