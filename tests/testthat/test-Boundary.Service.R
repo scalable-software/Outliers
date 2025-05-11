@@ -7,21 +7,21 @@ describe("Given Boundary.Service", {
 describe("Given services <- Boundary.Service()",{
   it("then services is a list",{
     # GIVEN
-    services <- Boundary.Service()
+    services <- Boundary.Broker() |> Boundary.Service()
 
     # THEN
     services |> expect.list()
   })
   it("then services contain 'upper' service",{
     # GIVEN
-    services <- Boundary.Service()
+    services <- Boundary.Broker() |> Boundary.Service()
 
     # THEN
     services[['upper']] |> expect.exist()
   })
   it("then services contain 'lower' service",{
     # GIVEN
-    services <- Boundary.Service()
+    services <- Boundary.Broker() |> Boundary.Service()
 
     # THEN
     services[['lower']] |> expect.exist()
@@ -36,7 +36,7 @@ describe("Given input |> service[['upper']]()",{
     skewness <- Skewness.Broker() |> Skewness.Service()
     scale    <- Scaling.Broker()  |> Scaling.Service()
 
-    service <- Boundary.Service()
+    service <- Boundary.Broker() |> Boundary.Service()
     input   <- 1000 |> rnorm(10,5)
 
     # When
@@ -52,7 +52,7 @@ describe("Given input |> service[['upper']]()",{
   })
   it("then an exception is thrown when input is null",{
     # GIVEN
-    service <- Boundary.Service()
+    service <- Boundary.Broker() |> Boundary.Service()
 
     # WHEN
     input <- NULL
@@ -63,7 +63,7 @@ describe("Given input |> service[['upper']]()",{
   })
   it("then an exception is thrown when input is not numeric",{
     # GIVEN
-    service <- Boundary.Service()
+    service <- Boundary.Broker() |> Boundary.Service()
 
     # When
     input <- ''
@@ -82,7 +82,7 @@ describe("Given input |> service[['lower']]()",{
     skewness <- Skewness.Broker() |> Skewness.Service()
     scale    <- Scaling.Broker()  |> Scaling.Service()
 
-    service <- Boundary.Service()
+    service <- Boundary.Broker() |> Boundary.Service()
     input   <- 1000 |> rnorm(10,5)
 
     # WHEN
@@ -98,7 +98,7 @@ describe("Given input |> service[['lower']]()",{
   })
   it("then an exception is thrown when input is null",{
     # GIVEN
-    service <- Boundary.Service()
+    service <- Boundary.Broker() |> Boundary.Service()
 
     # WHEN
     input <- NULL
@@ -109,7 +109,7 @@ describe("Given input |> service[['lower']]()",{
   })
   it("then an exception is thrown when input is not numeric",{
     # GIVEN
-    service <- Boundary.Service()
+    service <- Boundary.Broker() |> Boundary.Service()
 
     # WHEN
     input <- ''
