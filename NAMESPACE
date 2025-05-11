@@ -2,7 +2,6 @@
 
 export(Boundary.Broker)
 export(Boundary.Service)
-export(Example)
 export(IQR.Processor)
 export(IQR.Service)
 export(Outlier.Validator)
