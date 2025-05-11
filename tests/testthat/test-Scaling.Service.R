@@ -4,24 +4,24 @@ describe("Given Scaling.Service", {
   })
 })
 
-describe("Given services <- Scaling.Service()",{
+describe("Given services <- Scaling.Broker() |> Scaling.Service()",{
   it("then services is a list",{
     # GIVEN
-    services <- Scaling.Service()
+    services <- Scaling.Broker() |> Scaling.Service()
 
     # THEN
     services |> expect.list()
   })
   it("then services contains 'upper' service",{
     # GIVEN
-    services <- Scaling.Service()
+    services <- Scaling.Broker() |> Scaling.Service()
 
     # THEN
     services[['upper']] |> expect.exist()
   })
   it("then services contains 'lower' service",{
     # GIVEN
-    services <- Scaling.Service()
+    services <- Scaling.Broker() |> Scaling.Service()
 
     # THEN
     services[['lower']] |> expect.exist()
@@ -31,7 +31,7 @@ describe("Given services <- Scaling.Service()",{
 describe("When medcouple |> services[['upper']]()",{
   it("then exp(-4*medcouple) is returned if medcouple >= 0",{
     # GIVEN
-    service <- Scaling.Service()
+    service <- Scaling.Broker() |> Scaling.Service()
     medcouple <- 1
 
     # When
@@ -43,7 +43,7 @@ describe("When medcouple |> services[['upper']]()",{
   })
   it("then exp(-3*medcouple) is returned if medcouple < 0",{
     # GIVEN
-    service <- Scaling.Service()
+    service <- Scaling.Broker() |> Scaling.Service()
     medcouple <- -1
 
     # When
@@ -55,7 +55,7 @@ describe("When medcouple |> services[['upper']]()",{
   })
   it("then an exception should be thrown if input is NULL",{
     # GIVEN
-    service <- Scaling.Service()
+    service <- Scaling.Broker() |> Scaling.Service()
     medcouple <- NULL
 
     # THEN
@@ -64,7 +64,7 @@ describe("When medcouple |> services[['upper']]()",{
   })
   it("then an exception should be thrown if input is not Numeric",{
     # GIVEN
-    service <- Scaling.Service()
+    service <- Scaling.Broker() |> Scaling.Service()
     medcouple <- ""
 
     # THEN
@@ -76,7 +76,7 @@ describe("When medcouple |> services[['upper']]()",{
 describe("When medcouple |> services[['lower']]()",{
   it("then exp(3*medcouple) is returned if medcouple >= 0",{
     # GIVEN
-    service <- Scaling.Service()
+    service <- Scaling.Broker() |> Scaling.Service()
     medcouple <- 1
 
     # When
@@ -88,7 +88,7 @@ describe("When medcouple |> services[['lower']]()",{
   })
   it("then exp(4*medcouple) is returned if medcouple < 0",{
     # GIVEN
-    service <- Scaling.Service()
+    service <- Scaling.Broker() |> Scaling.Service()
     medcouple <- -1
 
     # When
@@ -100,7 +100,7 @@ describe("When medcouple |> services[['lower']]()",{
   })
   it("then an exception should be thrown if input is NULL",{
     # GIVEN
-    service <- Scaling.Service()
+    service <- Scaling.Broker() |> Scaling.Service()
     medcouple <- NULL
 
     # THEN
@@ -109,7 +109,7 @@ describe("When medcouple |> services[['lower']]()",{
   })
   it("then an exception should be thrown if input is not Numeric",{
     # GIVEN
-    service <- Scaling.Service()
+    service <- Scaling.Broker() |> Scaling.Service()
     medcouple <- ""
 
     # THEN

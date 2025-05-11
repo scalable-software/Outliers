@@ -34,7 +34,7 @@ describe("Given input |> service[['upper']]()",{
     quartile <- Quartile.Service()
     range    <- IQR.Service()     |> IQR.Processor()
     skewness <- Skewness.Broker() |> Skewness.Service()
-    scale    <- Scaling.Service()
+    scale    <- Scaling.Broker()  |> Scaling.Service()
 
     service <- Boundary.Service()
     input   <- 1000 |> rnorm(10,5)
@@ -80,7 +80,7 @@ describe("Given input |> service[['lower']]()",{
     quartile <- Quartile.Service()
     range    <- IQR.Service()     |> IQR.Processor()
     skewness <- Skewness.Broker() |> Skewness.Service()
-    scale    <- Scaling.Service()
+    scale    <- Scaling.Broker()  |> Scaling.Service()
 
     service <- Boundary.Service()
     input   <- 1000 |> rnorm(10,5)

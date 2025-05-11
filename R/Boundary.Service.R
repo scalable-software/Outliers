@@ -15,8 +15,8 @@ Boundary.Service <- \() {
 
   quartile <- Quartile.Service()
   range    <- IQR.Service()      |> IQR.Processor()
-  skewness <- Skewness.Broker () |>Skewness.Service()
-  scale    <- Scaling.Service()
+  skewness <- Skewness.Broker () |> Skewness.Service()
+  scale    <- Scaling.Broker()   |> Scaling.Service()
 
   services <- list()
   services[['upper']] <- \(sample) {

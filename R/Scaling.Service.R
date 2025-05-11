@@ -8,35 +8,18 @@
 #' @returns A `list` of utility functions: 
 #' * `upper(medcouple)`
 #' * `lower(medcouple)`
-#' @examples
-#' scale <- Scaling.Service()
-#' 
-#' upper.scaling <-
-#'  1 |> scale[['upper']]()
-#' 
-#' rm(upper.scaling)
 #' @export
-Scaling.Service <- \() {
+Scaling.Service <- \(broker) {
   validate <- Scaling.Validator()
 
   services <- list()
   services[['upper']] <- \(medcouple) {
     medcouple |> validate[['medcouple']]()
-
-    adjustments <- list()
-    adjustments[[1]] <- \(medcouple) exp(-3*medcouple)
-    adjustments[[2]] <- \(medcouple) exp(-4*medcouple)
-    
-    medcouple |> adjustments[[(medcouple >= 0) + 1]]()
+    medcouple |> broker[['upper']]()
   }
   services[['lower']] <- \(medcouple) {
     medcouple |> validate[['medcouple']]()   
-     
-    adjustments <- list()
-    adjustments[[1]] <- \(medcouple) exp(4*medcouple)
-    adjustments[[2]] <- \(medcouple) exp(3*medcouple)
-    
-    medcouple |> adjustments[[(medcouple >= 0) + 1]]()
+    medcouple |> broker[['lower']]()
    }
   return(services)
 }
