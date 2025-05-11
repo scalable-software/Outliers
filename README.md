@@ -1,6 +1,6 @@
 ![License: CC BY-NC-SA 4.0](https://flat.badgen.net/static/license/CC-BY-NC-SA-4.0/green)
 
-# Outlier Detection Utilities
+# Outlier Detection Utility
 
 Outliers are those samples which falls above the `upper` boundary or below the `lower` boundary where,
 the `upper` boundary equals `1.5` times the `IQR` above the 75'th percentile and the `lower` boundary equals `1.5` times the `IQR` below the 25'th percentile. To support `outlier` detection in non-symmetrical distributions, the `medcouple` estimator is used when calculating the `upper` and `lower` boundaries.
@@ -21,13 +21,13 @@ Two utilities are included in this package:
 1. Extracting outliers from a data sample
 
 ```r
-extract <- Outliers::Outliers.extract()
-output   <- 1000 |> rnorm(10,5) |> extract()
+library(Outliers)
+output <- 1000 |> rnorm(10,5) |> extract.outliers()
 ```
 
-2. Remove outliers from a vector
+2. Remove outliers from a data sample
 
 ```r
-outliers <- Outliers::Orchestrator()
-output   <- 1000 |> rnorm(10,5) |> outliers[['remove']]()
+library(Outliers)
+output <- 1000 |> rnorm(10,5) |> remove.outliers()
 ```
