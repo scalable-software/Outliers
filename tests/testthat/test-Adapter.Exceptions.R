@@ -38,11 +38,13 @@ describe("When input |> exception[['type.mismatch']]()",{
 
     # WHEN
     input <- TRUE
-    type  <- "character"
+
+    actual   <- "boolean"
+    expected <- "character"
 
     # THEN
-    error.message <- "Type.Mismatch: Got 'character' but expected 'numeric'."
+    error.message <- "Type.Mismatch: Got 'boolean' but expected 'character'."
 
-    input |> exception[['type.mismatch']](type) |> expect.error(error.message)
+    input |> exception[['type.mismatch']](actual, expected) |> expect.error(error.message)
   })
 })
