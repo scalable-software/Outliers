@@ -20,3 +20,20 @@ describe("Given adaptations <- Adapter.Broker()",{
     adaptations[['extract.sample']] |> expect.exist()
   })
 })
+
+describe("Given data |> adaptation[['extract.sample']]()",{
+  it("then sample data is returned based on specified column in data data.frame",{
+    # GIVEN
+    adaptations <- Adapter.Broker()
+
+    # WHEN
+    data   <- data.frame(a = 1:5, b = 6:10)
+    column <- 'a'
+
+    actual <- data |> adaptations[['extract.sample']](column)
+
+    # THEN
+    expected <- data[[column]]
+    actual |> expect.equal(expected)
+  })
+})
