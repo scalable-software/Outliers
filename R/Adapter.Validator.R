@@ -6,5 +6,6 @@ Adapter.Validator <- \() {
     input |> is.data.frame() |> isFALSE() |> exceptions[['type.mismatch']](class(input), 'data.frame')
     return(input)
   }
+  validators[['is.valid.column']] <- \() {}
   return(validators)
 }
