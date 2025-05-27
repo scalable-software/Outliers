@@ -1,1 +1,4 @@
-Adapter.Exceptions <- \() {}
+Adapter.Exceptions <- \() {
+  exceptions <- list()
+  return(exceptions)
+}
