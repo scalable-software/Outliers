@@ -19,6 +19,13 @@ describe("Given exceptions <- Adapter.Exceptions()", {
     # THEN
     exceptions[['type.mismatch']] |> expect.exist()
   })
+  it("then exceptions contains 'column.invalid' exception",{
+    # GIVEN
+    exceptions <- Adapter.Exceptions()
+
+    # THEN
+    exceptions[['column.invalid']] |> expect.exist()
+  })
 })
 
 describe("When input |> exception[['type.mismatch']]()",{
