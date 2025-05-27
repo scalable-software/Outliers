@@ -43,7 +43,7 @@ describe("When input |> validate[['is.data.frame']]()",{
     # THEN
     input |> validate[['is.data.frame']]() |> expect.no.error()
   })
-  it("then input should be returned if input is numeric",{
+  it("then input should be returned if input is data.frame",{
     # GIVEN
     validate <- Adapter.Validator()
 
