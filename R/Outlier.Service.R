@@ -14,9 +14,7 @@ Outlier.Service <- \(broker) {
   services <- list()
   services[['extract']] <- \(sample) {
     sample |> validate[['sample']]()
-    
-    idx <- sample |> broker[['extract']]()
-    sample[idx]
+    sample |> broker[['extract']]()
   }
   services[['remove']] <- \(sample) {
     sample |> validate[['sample']]()
