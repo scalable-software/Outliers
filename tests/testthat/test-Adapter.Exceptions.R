@@ -35,6 +35,32 @@ describe("Given exceptions <- Adapter.Exceptions()", {
   })
 })
 
+describe("When input |> exception[['argument.NULL']]()",{
+  it("then no exception is thrown when input is FALSE",{
+    # GIVEN
+    exception <- Adapter.Exceptions()
+
+    # WHEN
+    input <- FALSE
+
+    # THEN
+    input |> exception[['argument.NULL']]() |> expect.no.error()
+  })
+  it("then an exception is thrown when input is TRUE",{
+    # GIVEN
+    exception <- Adapter.Exceptions()
+
+    # WHEN
+    input <- TRUE
+    name  <- "sample"
+
+    # THEN
+    error.message <- "Argument.NULL: 'sample' cannot be NULL."
+
+    input |> exception[['argument.NULL']](name) |> expect.error(error.message)
+  })
+})
+
 describe("When input |> exception[['type.mismatch']]()",{
   it("then no exception is thrown when input is FALSE",{
     # GIVEN
