@@ -2,6 +2,7 @@ Adapter.Validator <- \() {
   exceptions <- Adapter.Exceptions()
 
   validators <- list()
+  # TODO: Update exist validator to except name of field
   validators[['exist']]           <- \(input) {
     input |> is.null() |> exceptions[['argument.NULL']]('input')
     return(input)
