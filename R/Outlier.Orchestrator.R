@@ -10,7 +10,10 @@ Outlier.Orchestrator <- \() {
     idx <- sample |> service[['extract']]()
     sample[idx]
   }
-  orchestrations[['remove']]  <- \(sample) sample |> service[['remove']]()
+  orchestrations[['remove']]  <- \(sample) {
+    idx <- sample |> service[['remove']]()
+    sample[idx]
+  }
   return(orchestrations)
 }
 
