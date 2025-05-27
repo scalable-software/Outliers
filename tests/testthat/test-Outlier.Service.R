@@ -39,11 +39,11 @@ describe("When input |> service[['extract']]()",{
     boundary.upper <- input |> boundary[['upper']]()
     boundary.lower <- input |> boundary[['lower']]()
 
-    expected.outliers <- input[input < boundary.lower | input > boundary.upper]
-    actual.outliers   <- input |> service[['extract']]()
+    expected.idx <- (input < boundary.lower | input > boundary.upper) |> which()
+    actual.idx   <- input |> service[['extract']]()
 
     # THEN
-    actual.outliers |> expect.equal(expected.outliers)
+    actual.idx |> expect.equal(expected.idx)
   })
   it("then an exception is thrown when input is NULL",{
     # GIVEN
