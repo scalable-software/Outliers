@@ -48,4 +48,16 @@ describe("Given input |> service[['extract.sample']](column)",{
     error.message <- "Argument.NULL: 'input' cannot be NULL."
     input |> service[['extract.sample']](column) |> expect.error(error.message)
   })
+  it("then an exception is thrown if column is NULL", {
+    # GIVEN
+    service <- Adapter.Broker() |> Adapter.Service()
+
+    # WHEN
+    input  <- data.frame(a = 1:5, b = 6:10)
+    column <- NULL
+
+    # THEN
+    error.message <- "Argument.NULL: 'input' cannot be NULL."
+    input |> service[['extract.sample']](column) |> expect.error(error.message)
+  })
 })
