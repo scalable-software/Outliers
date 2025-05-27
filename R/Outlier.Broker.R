@@ -14,13 +14,14 @@ Outlier.Broker <- \(boundary) {
     boundary.upper <- sample |> boundary[['upper']]()
     boundary.lower <- sample |> boundary[['lower']]()
 
-    sample[sample < boundary.lower | sample > boundary.upper] 
+    (sample < boundary.lower | sample > boundary.upper) |> which()
   }
   operations[['remove']] <- \(sample) {
     boundary.upper <- sample |> boundary[['upper']]()
     boundary.lower <- sample |> boundary[['lower']]()
 
-    sample[sample >= boundary.lower & sample <= boundary.upper] 
+    idx <- (sample >= boundary.lower & sample <= boundary.upper) |> which()
+    sample[idx]
   }
   return(operations)
 }
