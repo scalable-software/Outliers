@@ -55,3 +55,30 @@ describe("When input |> exception[['type.mismatch']]()",{
     input |> exception[['type.mismatch']](actual, expected) |> expect.error(error.message)
   })
 })
+
+describe("When input |> exception[['column.invalid']]()",{
+  it("then no exception is thrown when input is FALSE",{
+    # GIVEN
+    exception <- Adapter.Exceptions()
+
+    # WHEN
+    input <- FALSE
+
+    # THEN
+    input |> exception[['column.invalid']]() |> expect.no.error()
+  })
+  it("then an exception is thrown when input is TRUE",{
+    # GIVEN
+    exception <- Adapter.Exceptions()
+
+    # WHEN
+    input <- TRUE
+
+    column <- "invalid_column"
+
+    # THEN
+    error.message <- "Column.Invalid: Column name 'invalid_column' is invalid"
+
+    input |> exception[['column.invalid']](column) |> expect.error(error.message)
+  })
+})
