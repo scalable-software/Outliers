@@ -31,19 +31,19 @@ describe("Given operations <- Outlier.Broker() |> Outlier.Service()",{
 describe("When input |> operation[['extract']]()",{
   it("then the outlier in input should be returned",{
     # GIVEN
-    boundary <- Boundary.Broker() |> Boundary.Service()
-    operation  <- boundary |> Outlier.Broker()
-    input    <- 1000 |> rnorm(10,5)
+    boundary  <- Boundary.Broker() |> Boundary.Service()
+    operation <- boundary |> Outlier.Broker()
+    input     <- 1000 |> rnorm(10,5)
 
     # WHEN
     boundary.upper <- input |> boundary[['upper']]()
     boundary.lower <- input |> boundary[['lower']]()
 
-    expected.outliers <- input[input < boundary.lower | input > boundary.upper]
-    actual.outliers   <- input |> operation[['extract']]()
+    expected.idx <- (input < boundary.lower | input > boundary.upper) |> which()
+    actual.idx   <- input |> operation[['extract']]()
 
     # THEN
-    actual.outliers |> expect.equal(expected.outliers)
+    actual.idx |> expect.equal(expected.idx)
   })
 })
 
