@@ -4,12 +4,12 @@ describe("Given Adapter.Broker", {
   })
 })
 
-describe("Given operations <- Adapter.Broker()",{
-  it("then operations is a list",{
+describe("Given adaptations <- Adapter.Broker()",{
+  it("then adaptations is a list",{
     # GIVEN
-    operations <- Adapter.Broker()
+    adaptations <- Adapter.Broker()
 
     # THEN
-    operations |> expect.list()
+    adaptations |> expect.list()
   })
 })
