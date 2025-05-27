@@ -72,4 +72,16 @@ describe("Given input |> service[['extract.sample']](column)",{
     error.message <- "Type.Mismatch: Got 'list' but expected 'data.frame'."
     input |> service[['extract.sample']](column) |> expect.error(error.message)
   })
+  it("then an exception is thrown if column does not exist in data.frame", {
+    # GIVEN
+    service <- Adapter.Broker() |> Adapter.Service()
+
+    # WHEN
+    input  <- data.frame(a = 1:5, b = 6:10)
+    column <- 'c'
+
+    # THEN
+    error.message <- "Column.Invalid: Column name 'c' is invalid"
+    input |> service[['extract.sample']](column) |> expect.error(error.message)
+  })
 })
