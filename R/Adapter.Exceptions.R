@@ -6,5 +6,7 @@ Adapter.Exceptions <- \() {
   exceptions[['column.invalid']] <- \(invoke, column = NULL) {
     if (invoke) stop("Column.Invalid: Column name '", column, "' is invalid", call. = FALSE)
   }
+  exceptions[['argument.NULL']] <- \() {
+  }
   return(exceptions)
 }
