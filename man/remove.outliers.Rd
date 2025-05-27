@@ -4,13 +4,15 @@
 \alias{remove.outliers}
 \title{Remove outliers}
 \usage{
-remove.outliers(sample)
+remove.outliers(input, name)
 }
 \arguments{
-\item{sample}{A sample from which to remove outliers.}
+\item{input}{A vector or data.frame from which to remove outliers.}
+
+\item{name}{The name of the column in the data.frame which should be used for outlier removal. If \code{input} is a vector, this parameter is ignored.}
 }
 \value{
-A sample with outliers removed.
+A vector or data.frame with no outliers.
 }
 \description{
 \code{Outliers.remove()} is a function that removes outliers from a sample.
