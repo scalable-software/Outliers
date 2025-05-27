@@ -12,6 +12,13 @@ describe("When validators <- Adapter.Validator()",{
     # THEN
     adapters |> expect.list()
   })
+  it("then validators contains 'exist' validator", {
+    # GIVEN
+    adapters <- Adapter.Validator()
+
+    # THEN
+    adapters[['exist']] |> expect.exist()
+  })
   it("then validators contains 'is.data.frame' validator",{
     # GIVEN
     adapters <- Adapter.Validator()
