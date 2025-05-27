@@ -21,7 +21,7 @@ Two utilities are included in this package:
 1. Use `devtools` to install the package from GitHub:
 
 ```r
-devtools::install_github("/scalable-software/Outliers")
+devtools::install_github("scalable-software/Outliers")
 ```
 
 ## Use Case Examples
