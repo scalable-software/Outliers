@@ -20,8 +20,7 @@ Outlier.Broker <- \(boundary) {
     boundary.upper <- sample |> boundary[['upper']]()
     boundary.lower <- sample |> boundary[['lower']]()
 
-    idx <- (sample >= boundary.lower & sample <= boundary.upper) |> which()
-    sample[idx]
+    (sample >= boundary.lower & sample <= boundary.upper) |> which()
   }
   return(operations)
 }
