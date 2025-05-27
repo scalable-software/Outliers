@@ -3,8 +3,9 @@ Adapter.Service <- \(broker) {
 
   services <- list()
   services[['extract.sample']] <- \(data, column) {
-    data |> validate[['exist']]()
-    
+    data   |> validate[['exist']]()
+    column |> validate[['exist']]()
+
     data |> broker[['extract.sample']](column)
   }
   return(services)
