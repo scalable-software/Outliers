@@ -3,3 +3,13 @@ describe("Given Adapter.Exceptions", {
     Adapter.Exceptions |> expect.exist()
   })
 })
+
+describe("Given exceptions <- Adapter.Exceptions()", {
+  it("then exceptions is a list",{
+    # GIVEN
+    exceptions <- Adapter.Exceptions()
+
+    # THEN
+    exceptions |> expect.list()
+  })
+})
