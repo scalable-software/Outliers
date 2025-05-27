@@ -3,19 +3,21 @@
 #' @description
 #' `Outliers.extract()` is a function that extracts outliers from a sample.
 #'
-#' @param sample A sample from which to extract outliers.
+#' @param input A vector or data.frame from which to extract outliers.
+#' @param name The name of the column in the data.frame which should be used for outlier extraction. If `input` is a vector, this parameter is ignored.
 #'  
-#' @return A sample with outliers extracted.
+#' @return A vector or data.frame with outliers.
 #' @export
-extract.outliers <- \(sample) sample |> Outlier.Orchestrator()[['extract']]()
+extract.outliers <- \(input, name) input |> Outlier.Orchestrator()[['extract']](name)
 
 #' Remove outliers
 #'
 #' @description
 #' `Outliers.remove()` is a function that removes outliers from a sample.
 #'
-#' @param sample A sample from which to remove outliers.
+#' @param input A vector or data.frame from which to remove outliers.
+#' @param name The name of the column in the data.frame which should be used for outlier removal. If `input` is a vector, this parameter is ignored.
 #'
-#' @return A sample with outliers removed.
+#' @return A vector or data.frame with no outliers.
 #' @export
-remove.outliers  <- \(sample) sample |> Outlier.Orchestrator()[['remove']]()
+remove.outliers  <- \(input, name) input |> Outlier.Orchestrator()[['remove']](name)

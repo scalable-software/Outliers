@@ -4,13 +4,15 @@
 \alias{extract.outliers}
 \title{Extract outliers}
 \usage{
-extract.outliers(sample)
+extract.outliers(input, name)
 }
 \arguments{
-\item{sample}{A sample from which to extract outliers.}
+\item{input}{A vector or data.frame from which to extract outliers.}
+
+\item{name}{The name of the column in the data.frame which should be used for outlier extraction. If \code{input} is a vector, this parameter is ignored.}
 }
 \value{
-A sample with outliers extracted.
+A vector or data.frame with outliers.
 }
 \description{
 \code{Outliers.extract()} is a function that extracts outliers from a sample.
