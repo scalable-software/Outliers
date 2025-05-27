@@ -6,6 +6,8 @@ Adapter.Service <- \(broker) {
     data   |> validate[['exist']]()
     column |> validate[['exist']]()
 
+    data   |> validate[['is.data.frame']]()
+    
     data |> broker[['extract.sample']](column)
   }
   return(services)
