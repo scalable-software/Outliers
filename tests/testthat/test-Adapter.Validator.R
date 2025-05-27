@@ -5,7 +5,7 @@ describe("Given Adapter.Validator", {
 })
 
 describe("When validators <- Adapter.Validator()",{
-  it("then it returns a list",{
+  it("then a list of validators is returned",{
     # GIVEN
     adapters <- Adapter.Validator()
 
