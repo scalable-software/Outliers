@@ -21,8 +21,8 @@ describe("Given services <- Adapter.Service()",{
   })
 })
 
-describe("Given data |> service[['extract.sample']](column)",{
-  it("then sample data is returned based on specified column in data data.frame",{
+describe("Given input |> service[['extract.sample']](column)",{
+  it("then sample input is returned based on specified column in data data.frame",{
     # GIVEN
     service <- Adapter.Broker() |> Adapter.Service()
 
@@ -35,5 +35,17 @@ describe("Given data |> service[['extract.sample']](column)",{
     # THEN
     expected <- data[[column]]
     actual |> expect.equal(expected)
+  })
+  it("then an exception is thrown if input is NULL",{
+    # GIVEN
+    service <- Adapter.Broker() |> Adapter.Service()
+
+    # WHEN
+    input   <- NULL
+    column <- 'c'
+
+    # THEN
+    error.message <- "Argument.NULL: 'input' cannot be NULL."
+    input |> service[['extract.sample']](column) |> expect.error(error.message)
   })
 })
