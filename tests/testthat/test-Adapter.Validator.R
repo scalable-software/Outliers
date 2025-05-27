@@ -35,6 +35,40 @@ describe("When validators <- Adapter.Validator()",{
   })
 })
 
+describe("When input |> validate[['exist']]()",{
+  it("then an exception is thrown when input is NULL",{
+    # GIVEN
+    validate <- Adapter.Validator()
+
+    # WHEN
+    input <- NULL
+
+    # THEN
+    error.message <- "Argument.NULL: 'input' cannot be NULL."
+    input |> validate[['exist']]() |> expect.error(error.message)
+  })
+  it("then no exception is thrown when input is not NULL",{
+    # GIVEN
+    validate <- Adapter.Validator()
+
+    # WHEN
+    input <- 'not null'
+
+    # THEN
+    input |> validate[['exist']]() |> expect.no.error()
+  })
+  it("then input is returned when input is not NULL",{
+    # GIVEN
+    validate <- Adapter.Validator()
+
+    # WHEN
+    input <- 'not null'
+
+    # THEN
+    input |> validate[['exist']]() |> expect.equal(input)
+  })
+})
+
 describe("When input |> validate[['is.data.frame']]()",{
   it("then an exception should be thrown when input is not a data.frame",{
     # GIVEN
