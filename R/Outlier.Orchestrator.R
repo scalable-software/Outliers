@@ -14,10 +14,14 @@ Outlier.Orchestrator <- \() {
     if(input |> is.data.frame()) 
       input[input |> adapter[['extract.sample']](name) |> service[['extract']](),]
     else 
-      input[input |> service[['extract']]()]
-    
+      input[input |> service[['extract']]()] 
   }
-  orchestrations[['remove']]  <- \(sample, name) sample[sample |> service[['remove']]()]
+  orchestrations[['remove']]  <- \(input, name) {
+    if(input |> is.data.frame()) 
+      input[input |> adapter[['extract.sample']](name) |> service[['remove']](),]
+    else 
+      input[input |> service[['remove']]()] 
+  }
   return(orchestrations)
 }
 
