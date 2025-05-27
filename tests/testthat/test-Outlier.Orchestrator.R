@@ -96,4 +96,33 @@ describe("When input |> orchestration[['remove']]()",{
     # Then
     actual.outliers |> expect_equal(expected.outliers)
   })
+  it("then no outliers in input should be returned from a data.frame",{
+    # Given
+    service <- 
+      Boundary.Broker()  |>
+      Boundary.Service() |> 
+      Outlier.Broker()   |>
+      Outlier.Service()
+
+
+    adapter <-
+      Adapter.Broker() |> 
+      Adapter.Service()
+
+    orchestration <- Outlier.Orchestrator()
+
+    column <- 'value'
+
+    input <- 1000 |> rnorm(10,5) |> data.frame() |> setNames(column)
+
+    expected.no.outliers <- input[input |> 
+      adapter[['extract.sample']](column) |> 
+      service[['remove']](),]
+
+    # When
+    actual.no.outliers <- input |> orchestration[['remove']](column)
+
+    # Then
+    actual.no.outliers |> expect.equal(expected.no.outliers)
+  })
 })
