@@ -5,9 +5,19 @@ Outlier.Orchestrator <- \() {
     Outlier.Broker()   |>
     Outlier.Service()
 
+  adapter <-
+    Adapter.Broker() |> 
+    Adapter.Service()
+
   orchestrations <- list()
-  orchestrations[['extract']] <- \(sample) sample[sample |> service[['extract']]()]
-  orchestrations[['remove']]  <- \(sample) sample[sample |> service[['remove']]()]
+  orchestrations[['extract']] <- \(input, name) {
+    if(input |> is.data.frame()) 
+      input[input |> adapter[['extract.sample']](name) |> service[['extract']](),]
+    else 
+      input[input |> service[['extract']]()]
+    
+  }
+  orchestrations[['remove']]  <- \(sample, name) sample[sample |> service[['remove']]()]
   return(orchestrations)
 }
 
