@@ -1,1 +1,4 @@
-Adapter.Broker <- \() {}
+Adapter.Broker <- \() {
+  adaptations <- list()
+  return(adaptations)
+}
