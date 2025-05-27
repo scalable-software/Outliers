@@ -60,4 +60,16 @@ describe("Given input |> service[['extract.sample']](column)",{
     error.message <- "Argument.NULL: 'input' cannot be NULL."
     input |> service[['extract.sample']](column) |> expect.error(error.message)
   })
+  it("then an exception is thrown if input is not a data.frame", {
+    # GIVEN
+    service <- Adapter.Broker() |> Adapter.Service()
+
+    # WHEN
+    input  <- list(a = 1:5, b = 6:10)
+    column <- 'a'
+
+    # THEN
+    error.message <- "Type.Mismatch: Got 'list' but expected 'data.frame'."
+    input |> service[['extract.sample']](column) |> expect.error(error.message)
+  })
 })
