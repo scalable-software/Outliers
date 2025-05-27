@@ -61,3 +61,40 @@ describe("When input |> validate[['is.data.frame']]()",{
     input |> validate[['is.data.frame']]() |> expect.equal(input)
   })
 })
+
+describe("When input |> validate[['is.valid.column']](column)",{
+  it("then an exception is thrown when input data.frame has no matching column",{
+    # GIVEN
+    validate <- Adapter.Validator()
+
+    # WHEN
+    input <- data.frame(a = 1:3, b = 4:6)
+    column <- 'c'
+
+    # THEN
+    expected.error.message <- "Column.Invalid: Column name 'c' is invalid"
+    input |> validate[['is.valid.column']](column) |> expect.error(expected.error.message)
+  })
+  it("then no exception is thrown when input data.frame has matching column",{
+    # GIVEN
+    validate <- Adapter.Validator()
+
+    # WHEN
+    input <- data.frame(a = 1:3, b = 4:6)
+    column <- 'a'
+
+    # THEN
+    input |> validate[['is.valid.column']](column) |> expect.no.error()
+  })
+  it("then input is returned when input data.frame has matching column",{
+    # GIVEN
+    validate <- Adapter.Validator()
+
+    # WHEN
+    input <- data.frame(a = 1:3, b = 4:6)
+    column <- 'a'
+
+    # THEN
+    input |> validate[['is.valid.column']](column) |> expect.equal(input)
+  })
+})
