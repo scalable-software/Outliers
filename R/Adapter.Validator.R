@@ -1,1 +1,4 @@
-Adapter.Validator <- \() {}
+Adapter.Validator <- \() {
+  validators <- list()
+  return(validators)
+}
