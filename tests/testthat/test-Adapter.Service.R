@@ -12,4 +12,11 @@ describe("Given services <- Adapter.Service()",{
     # THEN
     services |> expect.list()
   })
+  it("then services contains 'extract.sample' service", {
+    # GIVEN
+    services <- Adapter.Service()
+
+    # THEN
+    services[['extract.sample']] |> expect.exist()
+  })
 })
