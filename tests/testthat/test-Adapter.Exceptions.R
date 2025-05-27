@@ -12,4 +12,11 @@ describe("Given exceptions <- Adapter.Exceptions()", {
     # THEN
     exceptions |> expect.list()
   })
+  it("then exceptions contains 'type.mismatch' exception",{
+    # GIVEN
+    exceptions <- Adapter.Exceptions()
+
+    # THEN
+    exceptions[['type.mismatch']] |> expect.exist()
+  })
 })
