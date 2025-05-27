@@ -16,7 +16,15 @@ Two utilities are included in this package:
 1. Extracting outliers from a data sample
 2. Remove outliers from a data sample
 
-### Use Case Example
+## Installation
+
+1. Use `devtools` to install the package from GitHub:
+
+```r
+devtools::install_github("/scalable-software/Outliers")
+```
+
+## Use Case Examples
 
 1. Extracting outliers from a data sample
 
